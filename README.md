@@ -1,6 +1,40 @@
 ## Equalheights
 
 A better and improved equalheights script for floating elements.
+NOTICE! This is not a complete solution yet, just copy the code and use on your site for now,
+tweet about it and I'd be happy! // timbrandin
+
+### How to use:
+
+```js
+attachEqualHeight('.equal-height > *');
+```
+
+#### And with Drupal for example
+
+```js
+Drupal.behaviors.equalheight = {
+  attach: function(context) {
+    attachEqualHeight('.equal-height > *');
+  }
+}
+
+function attachEqualHeight(selector) {
+  $(window).bind({
+    'load': function() {
+      equalheight(selector);
+    },
+    'resize': function() {
+      equalheight(selector);
+    }
+  });
+  $(document).bind({
+    'ajaxComplete': function() {
+      equalheight(selector);
+    }
+  });
+}
+```
 
 ### How it works:
 
@@ -11,28 +45,28 @@ One issue with measuring the height of an element, one can't have the height set
 
 #### Before .js:
 Notice that my structure looks like this before use of the script.
-````html
-    <div class="equal-height">
-      <div class="element">
-        <div class="content-container">
-          ... content
-        </div>
-      </div>
-      ... more .elements
+```html
+<div class="equal-height">
+  <div class="element">
+    <div class="content-container">
+      ... content
     </div>
-````
+  </div>
+  ... more .elements
+</div>
+```
 
 #### After .js:
 And after use of the script.
-````html
-    <div class="equal-height">
-      <div class="element">
-        <div class="content-container" style="min-height: 102px">
-          <div class="mp">
-            ... content
-          </div>
-        </div>
+```html
+<div class="equal-height">
+  <div class="element">
+    <div class="content-container" style="min-height: 102px">
+      <div class="mp">
+        ... content
       </div>
-      ... more .elements
     </div>
-````
+  </div>
+  ... more .elements
+</div>
+```
