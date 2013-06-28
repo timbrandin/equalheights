@@ -7,7 +7,7 @@ tweet about it and I'd be happy! // timbrandin
 ### How to use:
 
 ```js
-attachEqualHeight('.equal-height > *');
+equalheight('.equal-height > *');
 ```
 
 #### And with Drupal for example
